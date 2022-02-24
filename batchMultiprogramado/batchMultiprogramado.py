@@ -70,7 +70,12 @@ def memoriaPrimariaF():
 instr=instrucciones2.readlines()+instrucciones3.readlines()+instrucciones1.readlines()
 print("Cantidad de instrucciones insertadas",len(instr))
 print(instr)
-memoriaSecundariaF(instr)
+i=1
+if i==0:
+    memoriaPrimaria.truncate(0)
+    memoriaSecundaria.truncate(0)
+else:
+    memoriaSecundariaF(instr)
 
 
 
