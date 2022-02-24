@@ -20,15 +20,19 @@ print("**** Bienvenido al Sistema Operativo de Tiempo Compartido ****\n")
 # Se le pide al primer usuario indicar la cantidad de personas que utilizaran el sistema en la sesion
 numUsuarios = int(input("Digite el numero de usuarios para esta sesion: "))
 
+# Se crea una lista de usuarios que iterara ciclicamente durante el transcurso del programa
 listaUsuarios = []
 porcentajeTotal = 100
 
+# Se le pide a los usuarios ingresar el mombre y el porcentaje de recursos a usar
 for i in range(numUsuarios):
     nombre = str(input("Digite el nombre del usuario " + str(i + 1) + ": "))
     porcentajeUsuario = int(input("Ingrese el porcentaje de los recursos a usar ("
                                   + str(porcentajeTotal) + "% disponible): "))
     listaUsuarios.append(Usuario(nombre, porcentajeUsuario))
     porcentajeTotal = porcentajeTotal - porcentajeUsuario
+
+# Se itera ciclicamente en la lista de usuarios para que cada uno ejecute las operaciones que desee
 for usuario in cycle(listaUsuarios):
     termino = False;
     print("*********************************************************\n")
