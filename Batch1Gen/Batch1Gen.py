@@ -6,7 +6,7 @@
 import time
 
 def procesamiento(instruccion):
-    for i in linea:
+    for i in instruccion:
         time.sleep(0.3)
         if i=='#':   ###@
             time.sleep(10)
@@ -14,12 +14,12 @@ def procesamiento(instruccion):
     print(linea)
     return 0
 
-instrucciones = open("instrucciones.txt")
+instrucciones1 = open("instrucciones1.txt")
 
-linea = instrucciones.readline()
+linea = instrucciones1.readline()
 print("Primer set de instrucciones (disquete)")
 while linea !='':
-  linea=instrucciones.readline()
+  linea=instrucciones1.readline()
   procesamiento(linea)
 
 print("Segundo set de instrucciones (disquete)")
@@ -40,4 +40,6 @@ while linea !='':
   linea=instrucciones3.readline()
   procesamiento(linea)
   
-
+instrucciones1.close()
+instrucciones2.close()
+instrucciones3.close()
