@@ -9,8 +9,9 @@ from itertools import cycle
 # La clase usuario le permite al sistema operativo saber cuantos usuarios van a compartir los
 # recursos
 class Usuario:
-    def __init__(self, nombre):
+    def __init__(self, nombre, porcentaje):
         self.nombre = nombre
+        self.porcentaje = porcentaje
 
 
 # Ejecucion en consola
@@ -20,16 +21,19 @@ print("**** Bienvenido al Sistema Operativo de Tiempo Compartido ****\n")
 numUsuarios = int(input("Digite el numero de usuarios para esta sesion: "))
 
 listaUsuarios = []
+porcentajeTotal = 100
 
 for i in range(numUsuarios):
     nombre = str(input("Digite el nombre del usuario " + str(i + 1) + ": "))
-    listaUsuarios.append(Usuario(nombre))
-
+    porcentajeUsuario = int(input("Ingrese el porcentaje de los recursos a usar ("
+                                  + str(porcentajeTotal) + "% disponible): "))
+    listaUsuarios.append(Usuario(nombre, porcentajeUsuario))
+    porcentajeTotal = porcentajeTotal - porcentajeUsuario
 for usuario in cycle(listaUsuarios):
     termino = False;
     print("*********************************************************\n")
     while not termino:
-        print("Turno del usuario " + usuario.nombre)
+        print("Turno del usuario " + usuario.nombre + "(" + str(usuario.porcentaje) + "% de los recursos)")
         print("********************************")
         opcion = int(input("Digite que tipo de operacion desea hacer:\n"
                            "1. Suma\n"
